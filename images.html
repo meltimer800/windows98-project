@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="icon.png">
+    <title>Windows 98</title>
+    <style>
+        .image-carousel {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+        .image-carousel img {
+            display: none;
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .image-carousel img.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Images Nostalgie de Windows 98</h1>
+        <nav>
+            <ul class="nav-list">
+                <li><a href="index.html">Articles</a></li>
+                <li><a href="index.html">Nostalgie</a></li>
+                <li><a href="index.html">Contact</a></li>
+                <li><a href="images.html">Images</a></li>
+                <li><a href="doom.html">Doom</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section class="gallery">
+            <h2>Galerie d'Images</h2>
+            <p>Revivez la magie de Windows 98 à travers ces images emblématiques.</p>
+            <div class="image-carousel">
+                <img src="./images/image1.jpg" alt="Écran de démarrage Windows 98" class="active" />
+                <img src="./images/image2.jpg" alt="Interface de Windows 98" />
+                <img src="./images/image3.jpg" alt="Jeux classiques" />
+                <img src="./images/image4.jpg" alt="Bureau Windows 98" />
+            </div>
+            <button onclick="prevImage()">Précédent</button>
+            <button onclick="nextImage()">Suivant</button>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <h2 id="contact">Contact</h2>
+        <p>Pour toute question ou contribution, écrivez à : fede10200611@gmail.com</p>
+    </footer>
+
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.image-carousel img');
+
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) img.classList.add('active');
+            });
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+            showImage(currentIndex);
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+            showImage(currentIndex);
+        }
+    </script>
+</body>
+</html>
